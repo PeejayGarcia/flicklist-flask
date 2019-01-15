@@ -16,7 +16,7 @@ def index():
     # build the response string
     content = "<h1>Movie of the Day</h1>"
     content += "<ul>"
-    content += "<li>" + movie + "</li>"
+    content += "<li>" + movie + "</li>"  #content = content + <h1>...
     content += "</ul>"
     content += "<h2>Tomorrow's Movie</h2>"
     content += "<ul>"
