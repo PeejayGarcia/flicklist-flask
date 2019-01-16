@@ -21,6 +21,7 @@ page_footer = """
 
 # a form for adding new movies
 add_form = """
+<html>
     <form action="/add" method="post">
         <label for="new-movie">
             I want to add
@@ -29,6 +30,7 @@ add_form = """
         </label>
         <input type="submit" value="Add It"/>
     </form>
+</html>
 """
 
 # TODO:
@@ -38,7 +40,25 @@ add_form = """
 
 # a form for crossing off watched movies
 crossoff_form = """
-
+<html>
+    <body>
+        <form action="/crossoff" method="post">
+            <label for="">
+            I want to cross off
+            <select type="text" id="" name=""/>
+                <option value = "1">The Fellowship of the Ring</option>
+                <option value = "2">The Two Towers</option>
+                <option value = "3">The Return of the King</option>
+                <option value = "4">The Hobbit: An Unexpected Journey</option>
+                <option value = "5">The Hobbit: The Desolation of Smaug</option>
+                <option value = "6">The Hobbit: The Battle of the 5 Armies</option>
+             </select>
+            from my Watchlist.
+            </label>
+            <input type="submit" />
+        <form>
+    <body>
+<html>
 """
 
 # TODO:
@@ -46,8 +66,12 @@ crossoff_form = """
 # "Star Wars has been crossed off your watchlist".
 # And create a route above the function definition to receive and handle the request from 
 # your crossoff_form.
+@app.route("/crossoff", methods=['POST'])
 def crossoff_movie():
-    crossed_off_movie = request.form['crossed-off-movie']    
+    crossed_off_movie = request.form['crossed-off-movie']
+    crossed_off_element = "<strong>" + crossed_off_movie + "</strong>"
+    crossed_sentence = "<strike>" + crossed_off_element + "<strike>" + "has been crossed off your watchlist!"
+    content = page_header + "<p>" + crossed_sentence + "</p>" + page_footer
 
 # TODO:
 # modify the crossoff_form above to use a dropdown (<select>) instead of
